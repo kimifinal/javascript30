@@ -47,6 +47,7 @@ gulp.task('sass', function () {
 
 gulp.task('babel', () =>{
 gulp.src('./src/js/**/*.js')
+    .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.babel({
         presets: ['env']
