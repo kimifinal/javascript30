@@ -54,6 +54,7 @@ body,html {
   border: .3em solid black;
   border-radius: 1em;
   text-align: center;
+  transition: all .05s ease;
 }
 
 kbd {
@@ -71,7 +72,8 @@ kbd {
 }
 
 .playing {
-  transform: scale(1.1);
+  transform: scale(1.12);
   border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  box-shadow: 0 0 1em #ffc600;
+  text-shadow: 0 0 1em #ffc600;
 }
