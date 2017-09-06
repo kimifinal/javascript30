@@ -47,6 +47,7 @@ gulp.task('sass', function () {
 
 gulp.task('babel', () =>{
 gulp.src('./src/js/**/*.js')
+    .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.babel({
         presets: ['env']
@@ -57,27 +58,27 @@ gulp.src('./src/js/**/*.js')
     .pipe(browserSync.stream());
   });
 
-gulp.task('bower', function() {
-  return gulp.src(mainBowerFiles({
-    "overrides": {
-      "vue": {                       // 套件名稱
-          "main": "dist/vue.js"      // 取用的資料夾路徑
-      }
-    }
-  }))
-      .pipe(gulp.dest('./.tmp/vendors'))
-      cb(err)
-});
+// gulp.task('bower', function() {
+//   return gulp.src(mainBowerFiles({
+//     "overrides": {
+//       "vue": {                       // 套件名稱
+//           "main": "dist/vue.js"      // 取用的資料夾路徑
+//       }
+//     }
+//   }))
+//       .pipe(gulp.dest('./.tmp/vendors'))
+//       cb(err)
+// });
 
-gulp.task('vendorJS', ['bower'], function() {
-  return gulp.src('./.tmp/vendors/**/**.js')
-    .pipe($.order([
-      'jquery.js',
-      'bootstrap.js'
-    ]))
-    .pipe($.concat('vendors.js'))
-    .pipe(gulp.dest('./public/js'))
-});
+// gulp.task('vendorJS', ['bower'], function() {
+//   return gulp.src('./.tmp/vendors/**/**.js')
+//     .pipe($.order([
+//       'jquery.js',
+//       'bootstrap.js'
+//     ]))
+//     .pipe($.concat('vendors.js'))
+//     .pipe(gulp.dest('./public/js'))
+// });
 
 gulp.task('browser-sync', function() {
   browserSync.init({
@@ -93,4 +94,4 @@ gulp.task('watch', function () {
   gulp.watch('./src/js/**/*.js', ['babel']);
 });
 
-gulp.task('default', ['browser-sync', 'jade', 'sass', 'babel', 'vendorJS', 'watch']);
+gulp.task('default', ['browser-sync', 'jade', 'sass', 'babel', /*'vendorJS',*/ 'watch']);
