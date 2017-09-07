@@ -1,0 +1,88 @@
+html {
+  background: url("img/background.jpg");
+  background-size: cover;
+  font-family:'helvetica neue';
+  text-align: center;
+  font-size: 10px;
+}
+
+body {
+  background-color: rgba( #129DFF, 0.3);
+  margin: 0;
+  font-size: 2em;
+  display:flex;
+  flex:2;
+  min-height: 100vh;
+  align-items: center;
+}
+
+.clockWrap{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.clock {
+  width: 60%;  //設定寬度
+  padding-top: 60%;  //用padding撐開
+  margin: 50px auto;  //置中
+  border:15px solid white;
+  border-radius:50%;
+  position: relative;
+  box-shadow:
+  inset 0 0 0 8px rgba(0,0,0,0.2),
+  inset 0 0 0 8px #EFEFEF,
+  inset 0 0 150px black,
+  0 0 20px rgba(0,0,0,0.5);
+}
+
+.clock-face {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(90deg); //表面旋轉90度
+}
+
+.clock-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 10px solid #EFEFEF;
+  border-radius: 50%;
+  box-shadow: 
+  0 0 20px rgba(0, 0, 0, 0.80),
+  0 0 0 2px #EFEFEF;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.hand {
+  position: absolute;
+  transform-origin: 100%;  //設定圓心位置
+  // transform: rotate(90deg);
+  transition-timing-function: linear;
+  width: 50%;
+  top: calc(50% - 3px);
+  border-radius: 50% 0 0 50%;  //讓指針前端是尖的
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.80);  //給指針有懸浮的感覺
+  &.second-hand {  //調整秒針長度、寬度與顏色
+    width: 45%;
+    left: 5%;
+    background:#C10000;
+    height: 5px;
+  }
+  &.min-hand {  //調整分針長度、寬度與顏色
+    width: 40%;
+    left: 10%;
+    background:#000000;
+    height: 6px;
+  }
+  &.hour-hand {  //調整時針長度、寬度與顏色
+    width: 35%;
+    left: calc(15% - 1px);
+    background:#000000;
+    height: 9px;
+  }
+}
