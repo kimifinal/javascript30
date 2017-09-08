@@ -15,10 +15,13 @@ html(lang="en")
       input#spacing(type="range", name="spacing", min="10", max="200", value="10", data-sizing="px")
 
       label(for="blur") Blur:
-      input#blur(type="range", name="blur", min="10", max="200", value="10", data-sizing="px")
+      input#blur(type="range", name="blur", min="0", max="25", value="0", data-sizing="px")
 
-      abel(for="base") Base Color
-      input#base(type="color", name="blur", min="10", max="200", value="10", data-sizing="px")
+      label(for="sepia") Sepia:
+      input#sepia(type="range", name="sepia", min="0", max="100", value="0", data-sizing="%")
+
+      label(for="base") Base Color
+      input#base(type="color", name="base", value="#ffc600")
 
     img(src="https://source.unsplash.com/7bwQXzbF6KE/800x500", alt="")
 

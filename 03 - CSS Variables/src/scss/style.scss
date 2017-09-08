@@ -1,13 +1,18 @@
 :root {
+  //CSS變數用法，詳細可參考 http://muki.tw/tech/native-css-variables/
   --base: #ffc600;
   --spacing: 10px;
-  --blur: 10px;
+  --blur: 0px;
+  --sepia: 0%;
 }
 
 img {
+  //帶入CSS變數
   padding: var(--spacing);
   background: var(--base);
-  filter: blur(var(--blur));
+
+  //filter濾鏡使用，詳細可參考 https://www.w3schools.com/cssref/css3_pr_filter.asp
+  filter: blur(var(--blur)) sepia(var(--sepia));
 }
 
 .hl {
