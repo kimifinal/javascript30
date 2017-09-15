@@ -148,7 +148,8 @@
       return aLast > bLast ? 1 : -1;
     });
     console.log(alpha);
-    // const answer7 = JSON.stringify(alpha);
+    const answer7 = JSON.stringify(alpha);
+    // console.log(typeof answer7);
     document.querySelector('.A7').innerHTML = 'A7. ' + alpha;
     const A7 = document.querySelector('.A7');
     const A7nodeTable = document.createElement("TABLE");
@@ -172,20 +173,35 @@
       return obj;
     }, {});
     console.table(transportation);
-    console.log(transportation.car);
     const answer8 = JSON.stringify(transportation);
+    console.log(answer8);
     document.querySelector('.A8').innerHTML = 'A8. ' + answer8;
     const A8 = document.querySelector('.A8');
     const A8nodeTable = document.createElement("TABLE");
-    const A8nodeTr = document.createElement('tr');
-    A8nodeTr.innerHTML = '<div>Car : ' + transportation.car + '</div>' + 
-                         '<div>Truck : ' + transportation.truck + '</div>' +
-                         '<div>Bike : ' + transportation.bike + '</div>' +
-                         '<div>Walk : ' + transportation.walk + '</div>' +
-                         '<div>Van : ' + transportation.van + '</div>' +
-                         '<div>Pogostick : ' + transportation.pogostick + '</div>';
-    A8nodeTable.appendChild(A8nodeTr);
+    let content = '';
+    for(let key in transportation) {  //宣告key變數儲存物件的屬性名稱
+      const A8nodeTr = document.createElement('tr');
+      A8nodeTr.innerHTML += key + " : " + transportation[key]; 
+      //key為物件屬性名稱，transportation[key]為物件屬性值
+      A8nodeTable.appendChild(A8nodeTr); 
+      console.log(A8nodeTr.innerHTML);
+    }
     A8.appendChild(A8nodeTable);
     
     
+    //題目：試著將統計people的所有單字拆開，並統計各單字共出現次數(僅包含英文字)
+    //先宣告一個空陣列來傳入item，
+    //接著將每個item透過match()拆開只取英文字，
+    //再利用forEach來建立內容或是累加總數。
+    const strCnt = people.reduce(function (obj, item) {
+      const itemStr = item.match(/[a-zA-Z]/g, '');
+          itemStr.forEach(str => {
+              if (!obj[str]) {
+             obj[str] = 0;
+              }
+              obj[str]++
+          })
+      return obj;
+    }, {});
+    console.log(strCnt);
     
